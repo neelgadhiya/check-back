@@ -23,7 +23,7 @@ function App() {
     e.preventDefault();
     if (!name) return;
     try {
-      await axios.post('https://check-front.vercel.app:5000/api/users', { timeout: 5000 }, { name });
+      await axios.post('https://check-front.vercel.app:5000/api/users', { timeout: 20000 }, { name });
       setName('');
       fetchUsers(); // Refresh user list
     } catch (error) {
