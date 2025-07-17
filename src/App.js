@@ -12,7 +12,7 @@ function App() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('https://check-front.vercel.app:5000/api/users', { timeout: 5000 });
+      const response = await axios.get('https://check-front.vercel.app:5000/api/users', { timeout: 10000 });
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);
