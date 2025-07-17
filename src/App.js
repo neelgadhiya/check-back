@@ -12,7 +12,7 @@ function App() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/users');
+      const response = await axios.get('https://check-front.vercel.app/api/users');
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -23,7 +23,7 @@ function App() {
     e.preventDefault();
     if (!name) return;
     try {
-      await axios.post('http://localhost:5000/api/users', { name });
+      await axios.post('https://check-front.vercel.app/api/users', { name });
       setName('');
       fetchUsers(); // Refresh user list
     } catch (error) {
