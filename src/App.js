@@ -10,16 +10,29 @@ function App() {
     fetchUsers();
   }, []);
 
-  const fetchUsers = async () => {
-    try {
-      const response = await axios.get('https://check-front.vercel.app/api/users'); // ✅ CORRECT URL
-      console.log(response)
-      setUsers(response.data);
-    } catch (error) {
-      console.error('Error fetching users:', error.message);
+const fetchUsers = async () => {
+  try {
+    const response = await axios.get('https://check-front.vercel.app/api/users', {
+      timeout: 10000, // Increased to 10 seconds (10000ms)
+    });
+    console.log('Response:', response.data);
+    setUsers(response.data);
+  } catch (error) {
+    console.error('Error fetching users:', error.message);
+    console.log('Error details:', {
+      response: error.response,
+      request: error.request,
+      config: error.config,
+    });
+    if (error.code === 'ECONNABORTED') {
+      console.error('Request timed out after 10 seconds');
+    } else if (error.response) {
+      console.error(`Server responded with status ${error.response.status}`);
+    } else if (error.request) {
+      console.error('No response received from server');
     }
-  };
-
+  }
+};
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name) return;
