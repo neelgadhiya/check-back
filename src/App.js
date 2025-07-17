@@ -8,7 +8,7 @@ function App() {
   const [success, setSuccess] = useState(''); // For success messages
 
   // Backend API URL (replace with your actual backend URL)
-  const API_URL = process.env.REACT_APP_API_URL || 'https://your-backend.vercel.app/api/users';
+  const API_URL = 'https://check-front.vercel.app/';
 
   // Fetch users on component mount
   useEffect(() => {
