@@ -13,6 +13,7 @@ function App() {
   const fetchUsers = async () => {
     try {
       const response = await axios.get('https://check-front.vercel.app/api/users'); // ✅ CORRECT URL
+      console.log(response)
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching users:', error.message);
